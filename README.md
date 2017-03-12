@@ -13,7 +13,7 @@ Minor customizations to plex/web plugin
 
 2 - Lump this into the end of your Plex/Web 
 
-    `<script src="/web/extras.js"></script>`
+    `<script src="/web/Plextras.js"></script>`
     
 ##Screenshots
 ![](https://i.imgur.com/NY4vG3Q.png)
