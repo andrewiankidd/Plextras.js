@@ -41,4 +41,4 @@ Minor customizations to plex/web plugin
 ![](https://raw.githubusercontent.com/andrewiankidd/Plextras.js/master/Screenshots/Artwork_sidebar_hover.PNG)
 
 #### PMP support
-![](https://github.com/andrewiankidd/Plextras.js/blob/master/Screenshots/pmp.png?raw=true)
+![](https://raw.githubusercontent.com/andrewiankidd/Plextras.js/6f752da221afeb1b6233ed6f7a95ae8f0cc0826f/Screenshots/pmp.png)
