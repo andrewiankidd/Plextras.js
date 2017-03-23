@@ -8,6 +8,7 @@ Minor customizations to plex/web plugin
 - Add a new to the sidebar with customizable links and header
 
 ## Install
+#### Installing server side:
 1. Stick the js file in your plex/web plugin directory
 
     C:\Program Files (x86)\Plex\Plex Media Server\Resources\Plug-ins\WebClient.bundle\Contents\Resources
@@ -16,7 +17,12 @@ Minor customizations to plex/web plugin
 
     <script src="/web/Plextras.js"></script>
     
-3. Done!
+3. Done! Everyone accessing your plex server via your IP (Not Plex.tv) will have these features as configured by you.
+
+#### Installing client side:
+1. Have TamperMonkey/GreaseMonkey/Any UserScript manager installed on browser
+2. Install the user js from [here](https://github.com/andrewiankidd/Plextras.js/blob/master/Plextras.user.js)
+
     
 ## Screenshots
 #### Sidebar Minimized and background artwork enabled:              
