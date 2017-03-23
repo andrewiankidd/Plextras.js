@@ -6,6 +6,7 @@ Minor customizations to plex/web plugin
 - Minimize the sidebar to save screen space
 - Show artwork as background like old plex/web - [@uzegonemad](https://github.com/uzegonemad/plexbgartwork)
 - Add a new to the sidebar with customizable links and header
+- Expand 'Extras' display for movies (shows as grid instead of scroller)
 
 ## Install
 #### Option 1: Installing server side:
