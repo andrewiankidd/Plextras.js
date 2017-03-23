@@ -22,6 +22,7 @@ Minor customizations to plex/web plugin
 #### Installing client side:
 1. Have TamperMonkey/GreaseMonkey/Any UserScript manager installed on browser
 2. Install the user js from [here](https://github.com/andrewiankidd/Plextras.js/blob/master/Plextras.user.js)
+3. Done! Note that currently client side can only use default config.
 
     
 ## Screenshots
