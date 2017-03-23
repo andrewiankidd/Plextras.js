@@ -12,6 +12,12 @@ var customLinks = {'Home':'javascript:switchPort(80)', 'Requests':'javascript:sw
 ////////////////////////////////////////////////////
 ////////////////////////////////////////////////////
 
+var ua = navigator.userAgent;
+
+if (ua.includes('PlexMediaPlayer')){
+	alert('Loading Plextras...!');
+}
+
 //yay for jquery
 var script = document.createElement('script');
 script.src = 'http://code.jquery.com/jquery-1.11.0.min.js';
