@@ -15,7 +15,7 @@ var customLinks = {'Home':'javascript:switchPort(80)', 'Requests':'javascript:sw
 var ua = navigator.userAgent;
 
 if (ua.includes('PlexMediaPlayer')){
-	alert('Loading Plextras...!');
+	loadMods(); //bodge
 }
 
 //yay for jquery
@@ -35,6 +35,15 @@ window.onload = function () {
 	console.log('[Plextras.js] Starting Plextras...');
 	loadCustomStyles();
 
+	loadMods();
+}
+
+window.onhashchange = function () {	
+	//when loading a new page
+	loadMods();
+}
+
+function loadMods(){
 	//wait a bit to load custom section
 	setTimeout(
 		function() 
