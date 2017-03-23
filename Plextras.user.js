@@ -10,7 +10,7 @@
 
 (function () {
     var script = document.createElement('script');
-    script.src = 'https://cdn.rawgit.com/andrewiankidd/Plextras.js/master/Plextras.js';
+    script.src = 'https://cdn.rawgit.com/andrewiankidd/Plextras.js/ff3a6c33648e4b48f670250b26a8895f41ed064b/Plextras.js';
     script.type = 'text/javascript';
     document.getElementsByTagName('head')[0].appendChild(script);
 })();
