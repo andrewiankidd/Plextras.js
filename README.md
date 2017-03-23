@@ -40,5 +40,5 @@ Minor customizations to plex/web plugin
 #### Sidebar Enabled, with custom section and backround artwork enabled:
 ![](https://raw.githubusercontent.com/andrewiankidd/Plextras.js/master/Screenshots/Artwork_sidebar_hover.PNG)
 
-#### Partial PMP support
+#### PMP support
 ![](https://github.com/andrewiankidd/Plextras.js/blob/master/Screenshots/pmp.png?raw=true)
