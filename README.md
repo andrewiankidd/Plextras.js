@@ -11,7 +11,7 @@ Minor customizations to plex/web plugin
 #### Option 1: Installing server side:
 1. Copy Plextras.js to your plex/web plugin directory`
 
-    `C:\Program Files (x86)\Plex\Plex Media Server\Resources\Plug-ins\WebClient.bundle\Contents\Resources
+    `C:\Program Files (x86)\Plex\Plex Media Server\Resources\Plug-ins\WebClient.bundle\Contents\Resources`
 
 2. open index.html in the above directory and paste this at the end:
 
@@ -21,8 +21,8 @@ Minor customizations to plex/web plugin
 
 #### Option 2: Installing client side:
 1. Have TamperMonkey/GreaseMonkey/Any UserScript manager installed on browser
-2. Install the user js from [here](https://github.com/andrewiankidd/Plextras.js/blob/master/Plextras.user.js)
-3. Done! Note you will have to edit the userscript to customize.
+2. Install the user js from [here](https://github.com/andrewiankidd/Plextras.js/blob/master/Plextras.user.js) (click raw)
+3. Done! Now the script will run on **any** plex/web server including plex.tv
 
 #### Option 3: Installing to PMP
 1. Copy Plextras.js to your PMP web-client js folder
@@ -32,6 +32,8 @@ Minor customizations to plex/web plugin
 2. open index.html in the above directory and paste this at the end:
 
     `<script src="js/Plextras.js"></script>`
+    
+3. Done! Now PMP will run Plextras.js on startup
     
 ## Screenshots
 #### Sidebar Minimized and background artwork enabled:              
