@@ -5,9 +5,9 @@ var delayInt = 2500;
 var cssBGColor = '#3f4245';
 var autohideSidebar = true;
 var showArtWorkBackground = true;
+var ShowExpandedExtras = true;
 var customHeader = "Custom Links";
 var customLinks = {'Home':'javascript:switchPort(80)', 'Requests':'javascript:switchPort(3000)', 'Uptime':'https://stats.uptimerobot.com/q7BGEHzZz'};
-
 ////////////////////////////////////////////////////
 ////////////////////////////////////////////////////
 ////////////////////////////////////////////////////
@@ -50,12 +50,12 @@ console.log('[Plextras.js] Starting Plextras...');
 		{					
 			loadCustomSection();
 			loadSidebarSettings();
+			loadExtrasSettings();
 		},
 	delayInt);	
 }
 
 function loadCustomStyles(){
-	
 	
 	if (showArtWorkBackground==true)
 	{
@@ -64,6 +64,18 @@ function loadCustomStyles(){
 		$.get( "https://raw.githubusercontent.com/andrewiankidd/plexbgartwork/master/plexbgartwork.css", function( data ) {
 		  $('head').append('<style type="text/css">'+ data +'</style>');
 		});
+	}
+}
+
+function loadExtrasSettings(){
+		
+	if (ShowExpandedExtras==true)
+	{		
+		console.log('[Plextras.js] expanding extras section');
+		//[class^="classname"]
+		var extrasCSS = '[class^="PrePlayExtrasList-extrasHubCell-"]>div:nth-child(2),[class^="PrePlayExtrasList-extrasHubCell-"]>div:nth-child(2)>[class^="Measure-container-"]>div>div{ height:auto!important; width: auto!important; }';
+		extrasCSS += '[class^="PrePlayExtrasList-extrasHubCell-"]>div:nth-child(2)>[class^="Measure-container-"]>div>div>div{ position:relative!important; display:inline-block; transform: translate3d(10px, 10px, 0px)!important; margin: 10px;}';
+		$('head').append('<style type="text/css">'+ extrasCSS +'</style>');
 	}
 }
 
