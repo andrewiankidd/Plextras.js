@@ -15,7 +15,7 @@ var customLinks = {'Home':'javascript:switchPort(80)', 'Requests':'javascript:sw
 var ua = navigator.userAgent;
 
 if (ua.includes('PlexMediaPlayer')){
-	loadMods(); //bodge
+	alert('Loading Plextras for PMP...!');
 }
 
 //yay for jquery
@@ -32,18 +32,18 @@ document.getElementById('content').style.backgroundColor = cssBGColor;
 //NOTE: would be nice to have a better trigger
 window.onload = function () {	
 	//start
-	console.log('[Plextras.js] Starting Plextras...');
-	loadCustomStyles();
-
 	loadMods();
 }
 
 window.onhashchange = function () {	
-	//when loading a new page
+	//wait a bit to load custom section
 	loadMods();
 }
 
 function loadMods(){
+console.log('[Plextras.js] Starting Plextras...');
+	loadCustomStyles();
+
 	//wait a bit to load custom section
 	setTimeout(
 		function() 
