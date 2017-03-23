@@ -24,7 +24,7 @@ Minor customizations to plex/web plugin
 2. Install the user js from [here](https://github.com/andrewiankidd/Plextras.js/blob/master/Plextras.user.js)
 3. Done! Note you will have to edit the userscript to customize.
 
-### Option 3: Installing to PMP
+#### Option 3: Installing to PMP
 1. Copy Plextras.js to your PMP web-client js folder
 
     `C:\Program Files\Plex\Plex Media Player\web-client\desktop\js`
