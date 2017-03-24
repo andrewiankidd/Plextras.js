@@ -61,7 +61,7 @@ function loadCustomStyles(){
 	{
 		//all credit to https://github.com/uzegonemad/plexbgartwork
 		console.log('[Plextras.js] Adding artwork mod');
-		$.get( "https://raw.githubusercontent.com/andrewiankidd/plexbgartwork/master/plexbgartwork.css", function( data ) {
+		$.get( "https://raw.githubusercontent.com/uzegonemad/plexbgartwork/master/plexbgartwork.css", function( data ) {
 		  $('head').append('<style type="text/css">'+ data +'</style>');
 		});
 	}
