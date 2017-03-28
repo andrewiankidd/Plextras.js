@@ -10,7 +10,7 @@ Minor customizations to plex/web plugin
 - Hide Extras, Cast, Related Movies
 
 ## Install
-#### Option 1: Installing server side:
+#### Option 1a: Installing server side:
 1. Copy Plextras.js to your plex/web plugin directory`
 
     `C:\Program Files (x86)\Plex\Plex Media Server\Resources\Plug-ins\WebClient.bundle\Contents\Resources`
@@ -20,6 +20,19 @@ Minor customizations to plex/web plugin
     `<script src="/web/Plextras.js"></script>`
     
 3. Done! Everyone accessing your plex server via your IP (Not Plex.tv) will have these features as configured by you.
+
+#### Option 1b: Installing server side (With Auto-Updates)
+    Warning: doing this means always using the default settings
+    
+1. Copy Plextras.js to your plex/web plugin directory`
+
+    `C:\Program Files (x86)\Plex\Plex Media Server\Resources\Plug-ins\WebClient.bundle\Contents\Resources`
+
+2. open index.html in the above directory and paste this at the end:
+
+    `<script src="//andrewiankidd.co.uk/ext/mimefix/?gitfile=Plextras.js"></script>`
+    
+3. Done! Everyone accessing your plex server via your IP (Not Plex.tv) will have the default options enabled
 
 #### Option 2: Installing client side:
 1. Have TamperMonkey/GreaseMonkey/Any UserScript manager installed on browser
