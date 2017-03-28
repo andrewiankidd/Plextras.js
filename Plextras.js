@@ -6,6 +6,9 @@ var cssBGColor = '#3f4245';
 var autohideSidebar = true;
 var showArtWorkBackground = true;
 var ShowExpandedExtras = true;
+var HideMovieExtras = false; //NOTE!!!: ShowExpandedExtras takes priority
+var HideCastList = false;
+var HideRelatedMedia = false;
 var customHeader = "Custom Links";
 var customLinks = {'Home':'javascript:switchPort(80)', 'Requests':'javascript:switchPort(3000)', 'Uptime':'https://stats.uptimerobot.com/q7BGEHzZz'};
 ////////////////////////////////////////////////////
@@ -30,12 +33,12 @@ document.getElementById('content').style.backgroundColor = cssBGColor;
 //wait X seconds before loading
 //NOTE: this doesnt play well with user chooser (plex home)
 //NOTE: would be nice to have a better trigger
-window.onload = function () {	
+window.onload = function () {
 	//start
 	loadMods();
 }
 
-window.onhashchange = function () {	
+window.onhashchange = function () {
 	//wait a bit to load custom section
 	loadMods();
 }
@@ -46,17 +49,17 @@ console.log('[Plextras.js] Starting Plextras...');
 
 	//wait a bit to load custom section
 	setTimeout(
-		function() 
-		{					
-			loadCustomSection();
+		function()
+		{
 			loadSidebarSettings();
-			loadExtrasSettings();
+			loadExtraSettings();
+			loadCustomSection();
 		},
-	delayInt);	
+	delayInt);
 }
 
 function loadCustomStyles(){
-	
+
 	if (showArtWorkBackground==true)
 	{
 		//all credit to https://github.com/uzegonemad/plexbgartwork
@@ -67,45 +70,64 @@ function loadCustomStyles(){
 	}
 }
 
-function loadExtrasSettings(){
-		
+function loadExtraSettings(){
+
 	if (ShowExpandedExtras==true)
-	{		
+	{
 		console.log('[Plextras.js] expanding extras section');
-		//[class^="classname"]
-		var extrasCSS = '[class^="PrePlayExtrasList-extrasHubCell-"]>div:nth-child(2),[class^="PrePlayExtrasList-extrasHubCell-"]>div:nth-child(2)>[class^="Measure-container-"]>div>div{ height:auto!important; width: auto!important; }';
-		extrasCSS += '[class^="PrePlayExtrasList-extrasHubCell-"]>div:nth-child(2)>[class^="Measure-container-"]>div>div>div{ position:relative!important; display:inline-block; transform: translate3d(10px, 10px, 0px)!important; margin: 10px;}';
-		$('head').append('<style type="text/css">'+ extrasCSS +'</style>');
+		var expandExtrasCSS = '[class^="PrePlayExtrasList-extrasHubCell-"]>div:nth-child(2),[class^="PrePlayExtrasList-extrasHubCell-"]>div:nth-child(2)>[class^="Measure-container-"]>div>div{ height:auto!important; width: auto!important; }';
+		expandExtrasCSS += '[class^="PrePlayExtrasList-extrasHubCell-"]>div:nth-child(2)>[class^="Measure-container-"]>div>div>div{ position:relative!important; display:inline-block; transform: translate3d(10px, 10px, 0px)!important; margin: 10px;}';
+		$('head').append('<style type="text/css">'+ expandExtrasCSS +'</style>');
+	}
+	else if (HideMovieExtras==true)
+	{
+		console.log('[Plextras.js] Hiding movie extras');
+		var hideExtrasCSS = '[class^=PrePlayExtrasList-extrasHubCell-]{display:none!important}';
+		$('head').append('<style type="text/css">'+ hideExtrasCSS +'</style>');
+	}
+
+	if (HideCastList==true)
+	{
+		console.log('[Plextras.js] Hiding cast list');
+		var hideCastListCSS = '[class^=PrePlayCastList-castList-]{display:none!important}';
+		$('head').append('<style type="text/css">'+ hideCastListCSS +'</style>');
+	}
+
+	if (HideRelatedMedia==true)
+	{
+		console.log('[Plextras.js] Hiding related media');
+		var HideRelatedMediaCSS = '[class^=PrePlayRelatedList-relatedList-]{display:none!important}';
+		$('head').append('<style type="text/css">'+ HideRelatedMediaCSS +'</style>');
 	}
 }
 
 function loadSidebarSettings(){
-	
+
 	//hide sidebar
 	if (autohideSidebar==true){
-		
+
 		//kill container margin and add transition speed
-		$(".page-container").css("margin-left", "0px");	
+		$(".page-container").css("margin-left", "0px");
 		$('.sidebar-container').css("transition", "0.25s");
-		
+
 		//add hover actions
 		$('.sidebar-container').hover(function(){
 			expandSidebar();
 		}, function(){
 			contractSidebar();
-		});	
-		
+		});
+
 		//contract sidebar
 		contractSidebar();
-	}	
-	
+	}
+
 	function expandSidebar(){
 		console.log('[Plextras.js] Expanding sidebar');
 		$('.sidebar-container').css("width", "240px");
 		//this has a short delay so it waits for transition animation to finish before restoring text
 		setTimeout(
-			function() 
-			{					
+			function()
+			{
 				$('[class^="SidebarLink-title"]').removeAttr( 'style' );
 				$('[class^="SidebarServerLibraries-librariesTitle"]').removeAttr( 'style' );
 				$('[class^="SidebarList-sidebarListHeader"]').removeAttr( 'style' );
@@ -114,9 +136,9 @@ function loadSidebarSettings(){
 				$('[class^="ServerMenuButton-serverMenuTitle"]').removeAttr( 'style' );
 				$('[class^="SidebarLibraryItem-action"]').removeAttr( 'style' );
 			},
-		300);			
+		300);
 	}
-	
+
 	function contractSidebar(){
 		console.log('[Plextras.js] Contracting sidebar');
 		$('[class^="SidebarLink-title"]').css("font-size", "0px");
@@ -131,32 +153,32 @@ function loadSidebarSettings(){
 }
 
 
-function loadCustomSection(){	
+function loadCustomSection(){
 	console.log('[Plextras.js] Adding custom links section');
-	
+
 	//locate navigation sidebar
 	var navdiv = $('div[role="navigation"]').parent();
-	
+
 	//copy the 'Manage' section as a template
 	var newsec = $('div[role="navigation"]:first').clone();
-	newsec.attr('class', 'customSection');		
-		
+	newsec.attr('class', 'customSection');
+
 	//edit Section Header name
 	newsec.find('div[role="header"]').html(customHeader);
-	
+
 	//copy Settings link as template
 	var linktemplate = newsec.find("div:eq(1)");
-	
+
 	//remove all default links
-	newsec.find('[class^="SidebarListItem-sidebarListItem"]').remove();	
-	
+	newsec.find('[class^="SidebarListItem-sidebarListItem"]').remove();
+
 	//start appending custom links
 	for (var key in customLinks) {
 		newsec = newsec.clone();
-		var newlink = linktemplate;	  
+		var newlink = linktemplate;
 		newlink.find('a').attr("href", customLinks[key]);
 		newlink.find('[class^="SidebarLink-title"]').html(key);
-		newlink.find('a').attr('target', '_blank');	
+		newlink.find('a').attr('target', '_blank');
 		newsec.append(newlink);
 	}
 
@@ -171,3 +193,4 @@ function switchPort(port)
 	console.log('newurl: ' + newurl);
 	window.location.href = newurl;
 }
+s
