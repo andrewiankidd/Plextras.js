@@ -6,9 +6,9 @@ var cssBGColor = '#3f4245';
 var autohideSidebar = true;
 var showArtWorkBackground = true;
 var ShowExpandedExtras = true;
-var hideMovieExtras = true; //NOTE!!!: ShowExpandedExtras takes priority
-var hideCastList = true;
-var hideRelatedMedia = true;
+var hideMovieExtras = false; //NOTE!!!: ShowExpandedExtras takes priority
+var hideCastList = false;
+var hideRelatedMedia = false;
 var customHeader = "Custom Links";
 var customLinks = {'Home':'javascript:switchPort(80)', 'Requests':'javascript:switchPort(3000)', 'Uptime':'javascript:internalLink("https://stats.uptimerobot.com/q7BGEHzZz")', 'GitHub':'https://github.com/andrewiankidd/Plextras.js'};
 ////////////////////////////////////////////////////
