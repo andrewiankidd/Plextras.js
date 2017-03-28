@@ -46,3 +46,6 @@ Minor customizations to plex/web plugin
 
 #### PMP support
 ![](https://raw.githubusercontent.com/andrewiankidd/Plextras.js/6f752da221afeb1b6233ed6f7a95ae8f0cc0826f/Screenshots/pmp.png)
+
+### Option to open links inside plex UI
+![](https://github.com/andrewiankidd/Plextras.js/blob/a99638dc5e5f63fad31efcc169c3fd63200451c3/Screenshots/internallinks.png?raw=true)
