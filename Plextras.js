@@ -51,12 +51,12 @@ console.log('[Plextras.js] Starting Plextras...');
 	setTimeout(
 		function()
 		{
-			loadCustomSection();
 			loadSidebarSettings();
-      loadExtrasSettings();
-      loadExtrasSettings2();
-      loadExtrasSettings3();
-      loadExtrasSettings4();
+			loadExtrasSettings();
+			loadExtrasSettings2();
+			loadExtrasSettings3();
+			loadExtrasSettings4();
+			loadCustomSection();
 		},
 	delayInt);
 }
