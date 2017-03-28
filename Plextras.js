@@ -105,14 +105,10 @@ function loadSidebarSettings(){
 
 	//hide sidebar
 	if (autohideSidebar==true){
-
-		//kill container margin and add transition speed
-		$(".page-container").css("margin-left", "0px");
-		$('.sidebar-container').css("transition", "0.25s");
-		
 		//inject CSS
 		console.log('[Plextras.js] Hiding sidebar');
-		var hideSidebarCSS = '.sidebar-container [class^="SidebarLink-title"], .sidebar-container [class^="SidebarServerLibraries-librariesTitle"], .sidebar-container [class^="SidebarList-sidebarListHeader"]{font-size: 0px;}.sidebar-container [class^="SidebarLibrariesActions-actions"], .sidebar-container [class^="SidebarLink-children"], .sidebar-container [class^="ServerMenuButton-serverMenuTitle"]{display: none;}.sidebar-container [class^="SidebarLibraryItem-action"]{width: 0px;}.sidebar-container{width: 65px;}';
+		var hideSidebarCSS = '.page-container{margin-left:0px;} .sidebar-container{transition: 0.25s;}';
+		hideSidebarCSS += '.sidebar-container [class^="SidebarLink-title"], .sidebar-container [class^="SidebarServerLibraries-librariesTitle"], .sidebar-container [class^="SidebarList-sidebarListHeader"]{font-size: 0px;}.sidebar-container [class^="SidebarLibrariesActions-actions"], .sidebar-container [class^="SidebarLink-children"], .sidebar-container [class^="ServerMenuButton-serverMenuTitle"]{display: none;}.sidebar-container [class^="SidebarLibraryItem-action"]{width: 0px;}.sidebar-container{width: 65px;}';
 		hideSidebarCSS += '.sidebar-container:hover [class^="SidebarLink-title"], .sidebar-container:hover [class^="SidebarServerLibraries-librariesTitle"], .sidebar-container:hover [class^="SidebarList-sidebarListHeader"]{font-size: inherit;}.sidebar-container:hover [class^="SidebarLibrariesActions-actions"], .sidebar-container:hover [class^="SidebarLink-children"], .sidebar-container:hover [class^="ServerMenuButton-serverMenuTitle"]{display: inherit;}.sidebar-container:hover [class^="SidebarLibraryItem-action"]{width: inherit;}.sidebar-container:hover{width: inherit;}';
 		$('head').append('<style type="text/css">'+ hideSidebarCSS +'</style>');
 	}
