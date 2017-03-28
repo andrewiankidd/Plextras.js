@@ -6,11 +6,11 @@ var cssBGColor = '#3f4245';
 var autohideSidebar = true;
 var showArtWorkBackground = true;
 var ShowExpandedExtras = true;
-var HideMovieExtras = false; //NOTE!!!: ShowExpandedExtras takes priority
-var HideCastList = false;
-var HideRelatedMedia = false;
+var hideMovieExtras = true; //NOTE!!!: ShowExpandedExtras takes priority
+var hideCastList = true;
+var hideRelatedMedia = true;
 var customHeader = "Custom Links";
-var customLinks = {'Home':'javascript:switchPort(80)', 'Requests':'javascript:switchPort(3000)', 'Uptime':'https://stats.uptimerobot.com/q7BGEHzZz'};
+var customLinks = {'Home':'javascript:switchPort(80)', 'Requests':'javascript:switchPort(3000)', 'Uptime':'javascript:internalLink("https://stats.uptimerobot.com/q7BGEHzZz")', 'GitHub':'https://github.com/andrewiankidd/Plextras.js'};
 ////////////////////////////////////////////////////
 ////////////////////////////////////////////////////
 ////////////////////////////////////////////////////
@@ -79,21 +79,21 @@ function loadExtraSettings(){
 		expandExtrasCSS += '[class^="PrePlayExtrasList-extrasHubCell-"]>div:nth-child(2)>[class^="Measure-container-"]>div>div>div{ position:relative!important; display:inline-block; transform: translate3d(10px, 10px, 0px)!important; margin: 10px;}';
 		$('head').append('<style type="text/css">'+ expandExtrasCSS +'</style>');
 	}
-	else if (HideMovieExtras==true)
+	else if (hideMovieExtras==true)
 	{
 		console.log('[Plextras.js] Hiding movie extras');
 		var hideExtrasCSS = '[class^=PrePlayExtrasList-extrasHubCell-]{display:none!important}';
 		$('head').append('<style type="text/css">'+ hideExtrasCSS +'</style>');
 	}
 
-	if (HideCastList==true)
+	if (hideCastList==true)
 	{
 		console.log('[Plextras.js] Hiding cast list');
 		var hideCastListCSS = '[class^=PrePlayCastList-castList-]{display:none!important}';
 		$('head').append('<style type="text/css">'+ hideCastListCSS +'</style>');
 	}
 
-	if (HideRelatedMedia==true)
+	if (hideRelatedMedia==true)
 	{
 		console.log('[Plextras.js] Hiding related media');
 		var HideRelatedMediaCSS = '[class^=PrePlayRelatedList-relatedList-]{display:none!important}';
@@ -109,46 +109,12 @@ function loadSidebarSettings(){
 		//kill container margin and add transition speed
 		$(".page-container").css("margin-left", "0px");
 		$('.sidebar-container').css("transition", "0.25s");
-
-		//add hover actions
-		$('.sidebar-container').hover(function(){
-			expandSidebar();
-		}, function(){
-			contractSidebar();
-		});
-
-		//contract sidebar
-		contractSidebar();
-	}
-
-	function expandSidebar(){
-		console.log('[Plextras.js] Expanding sidebar');
-		$('.sidebar-container').css("width", "240px");
-		//this has a short delay so it waits for transition animation to finish before restoring text
-		setTimeout(
-			function()
-			{
-				$('[class^="SidebarLink-title"]').removeAttr( 'style' );
-				$('[class^="SidebarServerLibraries-librariesTitle"]').removeAttr( 'style' );
-				$('[class^="SidebarList-sidebarListHeader"]').removeAttr( 'style' );
-				$('[class^="SidebarLibrariesActions-actions"]').removeAttr( 'style' );
-				$('[class^="SidebarLink-children"]').removeAttr( 'style' );
-				$('[class^="ServerMenuButton-serverMenuTitle"]').removeAttr( 'style' );
-				$('[class^="SidebarLibraryItem-action"]').removeAttr( 'style' );
-			},
-		300);
-	}
-
-	function contractSidebar(){
-		console.log('[Plextras.js] Contracting sidebar');
-		$('[class^="SidebarLink-title"]').css("font-size", "0px");
-		$('[class^="SidebarServerLibraries-librariesTitle"]').css("font-size", "0px");
-		$('[class^="SidebarList-sidebarListHeader"]').css("font-size", "0px");
-		$('[class^="SidebarLibrariesActions-actions"]').css("display", "none");
-		$('[class^="SidebarLink-children"]').css("display", "none");
-		$('[class^="ServerMenuButton-serverMenuTitle"]').css("display", "none");
-		$('[class^="SidebarLibraryItem-action"]').css("width", "0px");
-		$('.sidebar-container').css("width", "65px");
+		
+		//inject CSS
+		console.log('[Plextras.js] Hiding sidebar');
+		var hideSidebarCSS = '.sidebar-container [class^="SidebarLink-title"], .sidebar-container [class^="SidebarServerLibraries-librariesTitle"], .sidebar-container [class^="SidebarList-sidebarListHeader"]{font-size: 0px;}.sidebar-container [class^="SidebarLibrariesActions-actions"], .sidebar-container [class^="SidebarLink-children"], .sidebar-container [class^="ServerMenuButton-serverMenuTitle"]{display: none;}.sidebar-container [class^="SidebarLibraryItem-action"]{width: 0px;}.sidebar-container{width: 65px;}';
+		hideSidebarCSS += '.sidebar-container:hover [class^="SidebarLink-title"], .sidebar-container:hover [class^="SidebarServerLibraries-librariesTitle"], .sidebar-container:hover [class^="SidebarList-sidebarListHeader"]{font-size: inherit;}.sidebar-container:hover [class^="SidebarLibrariesActions-actions"], .sidebar-container:hover [class^="SidebarLink-children"], .sidebar-container:hover [class^="ServerMenuButton-serverMenuTitle"]{display: inherit;}.sidebar-container:hover [class^="SidebarLibraryItem-action"]{width: inherit;}.sidebar-container:hover{width: inherit;}';
+		$('head').append('<style type="text/css">'+ hideSidebarCSS +'</style>');
 	}
 }
 
@@ -193,4 +159,10 @@ function switchPort(port)
 	console.log('newurl: ' + newurl);
 	window.location.href = newurl;
 }
-s
+
+function internalLink(thelink)
+{
+	var pagecontainer = $('.ReactSidebarPageView-pageContainer-1bcfz');
+	var newhtml = "<iframe id='PlextrasIframe' width='100%' height='100%' src='" + thelink + "'>";
+	pagecontainer.html(newhtml);
+}
