@@ -6,9 +6,9 @@ var cssBGColor = '#3f4245';
 var autohideSidebar = true;
 var showArtWorkBackground = true;
 var ShowExpandedExtras = true;
-var HideMovieExtras = false; //NOTE!!!: If TRUE make ShowExpandedExtras FALSE
+var HideMovieExtras = false; //NOTE!!!: ShowExpandedExtras takes priority
 var HideCastList = false;
-var RelatedMedia = false;
+var HideRelatedMedia = false;
 var customHeader = "Custom Links";
 var customLinks = {'Home':'javascript:switchPort(80)', 'Requests':'javascript:switchPort(3000)', 'Uptime':'https://stats.uptimerobot.com/q7BGEHzZz'};
 ////////////////////////////////////////////////////
@@ -52,10 +52,7 @@ console.log('[Plextras.js] Starting Plextras...');
 		function()
 		{
 			loadSidebarSettings();
-			loadExtrasSettings();
-			loadExtrasSettings2();
-			loadExtrasSettings3();
-			loadExtrasSettings4();
+			loadExtraSettings();
 			loadCustomSection();
 		},
 	delayInt);
@@ -73,48 +70,34 @@ function loadCustomStyles(){
 	}
 }
 
-function loadExtrasSettings(){
+function loadExtraSettings(){
 
 	if (ShowExpandedExtras==true)
 	{
 		console.log('[Plextras.js] expanding extras section');
-		//[class^="classname"]
-		var extrasCSS = '[class^="PrePlayExtrasList-extrasHubCell-"]>div:nth-child(2),[class^="PrePlayExtrasList-extrasHubCell-"]>div:nth-child(2)>[class^="Measure-container-"]>div>div{ height:auto!important; width: auto!important; }';
-		extrasCSS += '[class^="PrePlayExtrasList-extrasHubCell-"]>div:nth-child(2)>[class^="Measure-container-"]>div>div>div{ position:relative!important; display:inline-block; transform: translate3d(10px, 10px, 0px)!important; margin: 10px;}';
-		$('head').append('<style type="text/css">'+ extrasCSS +'</style>');
+		var expandExtrasCSS = '[class^="PrePlayExtrasList-extrasHubCell-"]>div:nth-child(2),[class^="PrePlayExtrasList-extrasHubCell-"]>div:nth-child(2)>[class^="Measure-container-"]>div>div{ height:auto!important; width: auto!important; }';
+		expandExtrasCSS += '[class^="PrePlayExtrasList-extrasHubCell-"]>div:nth-child(2)>[class^="Measure-container-"]>div>div>div{ position:relative!important; display:inline-block; transform: translate3d(10px, 10px, 0px)!important; margin: 10px;}';
+		$('head').append('<style type="text/css">'+ expandExtrasCSS +'</style>');
 	}
-}
-
-function loadExtrasSettings2(){
-
-	if (HideMovieExtras==true)
+	else if (HideMovieExtras==true)
 	{
 		console.log('[Plextras.js] Hiding movie extras');
-		//[class^="classname"]
-		var extrasCSS = '[class^=PrePlayExtrasList-extrasHubCell-]{display:none!important}';
-		$('head').append('<style type="text/css">'+ extrasCSS +'</style>');
+		var hideExtrasCSS = '[class^=PrePlayExtrasList-extrasHubCell-]{display:none!important}';
+		$('head').append('<style type="text/css">'+ hideExtrasCSS +'</style>');
 	}
-}
-
-function loadExtrasSettings3(){
 
 	if (HideCastList==true)
 	{
 		console.log('[Plextras.js] Hiding cast list');
-		//[class^="classname"]
-		var extrasCSS = '[class^=PrePlayCastList-castList-]{display:none!important}';
-		$('head').append('<style type="text/css">'+ extrasCSS +'</style>');
+		var hideCastListCSS = '[class^=PrePlayCastList-castList-]{display:none!important}';
+		$('head').append('<style type="text/css">'+ hideCastListCSS +'</style>');
 	}
-}
 
-function loadExtrasSettings4(){
-
-	if (RelatedMedia==true)
+	if (HideRelatedMedia==true)
 	{
 		console.log('[Plextras.js] Hiding related media');
-		//[class^="classname"]
-		var extrasCSS = '[class^=PrePlayRelatedList-relatedList-]{display:none!important}';
-		$('head').append('<style type="text/css">'+ extrasCSS +'</style>');
+		var HideRelatedMediaCSS = '[class^=PrePlayRelatedList-relatedList-]{display:none!important}';
+		$('head').append('<style type="text/css">'+ HideRelatedMediaCSS +'</style>');
 	}
 }
 
@@ -210,3 +193,4 @@ function switchPort(port)
 	console.log('newurl: ' + newurl);
 	window.location.href = newurl;
 }
+s
