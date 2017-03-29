@@ -7,6 +7,7 @@ var showCustomBackgroundImage = false;
 var autohideSidebar = true;
 var autoHideSidebarMobileOnly = false;
 var showArtWorkBackground = true;
+var showEpisodeSpecificArtwork = true;
 var ShowExpandedExtras = true;
 var hideMovieExtras = false; //NOTE!!!: ShowExpandedExtras takes priority
 var hideCastList = false;
@@ -48,12 +49,12 @@ window.onhashchange = function () {
 function loadMods(){
 console.log('[Plextras.js] Starting Plextras...');
 	loadCustomStyles();
+	loadSidebarSettings();
 
 	//wait a bit to load custom section
 	setTimeout(
 		function()
-		{
-			loadSidebarSettings();
+		{			
 			loadExtraSettings();
 			loadCustomSection();
 		},
@@ -76,11 +77,7 @@ function loadCustomStyles(){
 		var bgcss = '#content{background-image: url("https://i.imgur.com/Ynz8mjw.png");background-repeat: repeat-xy;}';
 		$('head').append('<style type="text/css">'+ bgcss +'</style>');
 	}
-
-}
-
-function loadExtraSettings(){
-
+	
 	if (ShowExpandedExtras==true)
 	{
 		console.log('[Plextras.js] expanding extras section');
@@ -108,6 +105,20 @@ function loadExtraSettings(){
 		var HideRelatedMediaCSS = '[class^=PrePlayRelatedList-relatedList-]{display:none!important}';
 		$('head').append('<style type="text/css">'+ HideRelatedMediaCSS +'</style>');
 	}
+
+}
+
+function loadExtraSettings(){
+	
+	if (showEpisodeSpecificArtwork==true)
+	{
+		console.log('[Plextras.js] Adding per-episode artwork mod (messy)');
+		if ($('[class^="PageHeaderLeft-pageHeaderLeft-"] a:last').text().indexOf("Season") >= 0)
+		{
+			var tvThumb = $('[class^="PosterCardImg-imageContainer-"] div').css('background-image');
+			$('head').append('<style type="text/css">[class^="PrePlayArtwork-imageContainer-"] div{background-image: '+ tvThumb +'!important; transition: 0.5s;}</style>');
+		}		
+	}
 }
 
 function loadSidebarSettings(){
@@ -117,7 +128,7 @@ function loadSidebarSettings(){
 
 	//hide sidebar
 	console.log('[Plextras.js] isMobile: ' +isMobile.matches);
-	if (autohideSidebar==true || (autoHideSidebarMobileOnly && isMobile==true)){
+	if (autohideSidebar==true || (autoHideSidebarMobileOnly==true && isMobile==true)){
 		//inject CSS
 		console.log('[Plextras.js] Hiding sidebar');
 		var hideSidebarCSS = '.page-container{margin-left:0px;} .sidebar-container{transition: 0.25s;}';
