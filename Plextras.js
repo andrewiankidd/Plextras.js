@@ -134,8 +134,8 @@ function loadCustomSection(){
 	//locate navigation sidebar
 	var navdiv = $('div[role="navigation"]').parent();
 
-	//copy the 'Manage' section as a template
-	var newsec = $('div[role="navigation"]:first').clone();
+	//copy the 'Online Content' section as a template
+	var newsec = $('div[role="navigation"]:last').clone();
 	newsec.attr('class', 'customSection');
 
 	//edit Section Header name
