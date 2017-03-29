@@ -141,8 +141,8 @@ function loadCustomSection(){
 	//edit Section Header name
 	newsec.find('div[role="header"]').html(customHeader);
 
-	//copy Settings link as template
-	var linktemplate = newsec.find("div:eq(1)");
+	//copy Recommended link as template
+	var linktemplate = newsec.find("div[class^='SidebarListItem-sidebarListItem-']:last");
 
 	//remove all default links
 	newsec.find('[class^="SidebarListItem-sidebarListItem"]').remove();
