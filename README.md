@@ -6,6 +6,8 @@ Minor customizations to plex/web plugin
 - Minimize the sidebar to save screen space
 - Show artwork as background like old plex/web - [@uzegonemad](https://github.com/uzegonemad/plexbgartwork)
 - Add a new section to the sidebar with customizable links and header
+- Open services such as PlexRequests inside Plex/web
+- Custom Background Image
 - Expand 'Extras' display for movies (shows as grid instead of scroller)
 - Hide Extras, Cast, Related Movies
 
