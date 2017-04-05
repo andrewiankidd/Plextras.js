@@ -7,11 +7,12 @@ var showCustomBackgroundImage = false;
 var autohideSidebar = true;
 var autoHideSidebarMobileOnly = false;
 var showArtWorkBackground = true;
-var showEpisodeSpecificArtwork = true;
+var showEpisodeSpecificArtwork = false;
 var ShowExpandedExtras = true;
 var hideMovieExtras = false; //NOTE!!!: ShowExpandedExtras takes priority
 var hideCastList = false;
 var hideRelatedMedia = false;
+var autoSignIn = false;
 var customHeader = "Custom Links";
 var customLinks = {'Home':'javascript:switchPort(80)', 'Requests':'javascript:switchPort(3000)', 'Uptime':'javascript:internalLink("https://stats.uptimerobot.com/q7BGEHzZz")', 'GitHub':'https://github.com/andrewiankidd/Plextras.js'};
 ////////////////////////////////////////////////////
@@ -118,6 +119,13 @@ function loadExtraSettings(){
 			var tvThumb = $('[class^="PosterCardImg-imageContainer-"] div').css('background-image');
 			$('head').append('<style type="text/css">[class^="PrePlayArtwork-imageContainer-"] div{background-image: '+ tvThumb +'!important; transition: 0.5s;}</style>');
 		}		
+	}
+	
+	if (autoSignIn!=false)
+	{
+		$('#username').val(autoSignIn[0]);
+		$('#password').val(autoSignIn[1]);
+		$('.btn-lg').trigger('click');
 	}
 }
 
