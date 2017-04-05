@@ -11,44 +11,49 @@ Minor customizations to plex/web plugin
 - Expand 'Extras' display for movies (shows as grid instead of scroller)
 - Hide Extras, Cast, Related Movies
 
-## Install
-#### Option 1a: Installing server side:
+## Setup & Install
+
+#### Step 1: Generate Custom Plextras.js
+
+1. Navigate to [This page](http://andrewiankidd.co.uk/ext/mimefix/) and fill in details as you want
+
+2. Copy the resulting URL
+    
+#### Step 2: Install
+
+##### Option One - Install to Your server (Preferred)
+    Pros: All user visiting your server by IP will get Plextras
+    Cons: Users visiting via Plex.tv will not get Plextras
+    
 1. Copy Plextras.js to your plex/web plugin directory`
 
     `C:\Program Files (x86)\Plex\Plex Media Server\Resources\Plug-ins\WebClient.bundle\Contents\Resources`
 
 2. open index.html in the above directory and paste this at the end:
 
-    `<script src="/web/Plextras.js"></script>`
+    `<script src="{your plextras URL}"></script>`
     
 3. Done! Everyone accessing your plex server via your IP (Not Plex.tv) will have these features as configured by you.
 
-#### Option 1b: Installing server side (With Auto-Updates)
-    Warning: doing this means always using the default settings
-    
-1. Copy Plextras.js to your plex/web plugin directory`
+#### Option Two: Installing to Web Browser
+    Pros: Works on any Plex/Web instance you visit, including other servers and Plex.tv
+    Cons: Only works in that browser, not customizable (yet)
 
-    `C:\Program Files (x86)\Plex\Plex Media Server\Resources\Plug-ins\WebClient.bundle\Contents\Resources`
-
-2. open index.html in the above directory and paste this at the end:
-
-    `<script src="//andrewiankidd.co.uk/ext/mimefix/?gitfile=Plextras.js"></script>`
-    
-3. Done! Everyone accessing your plex server via your IP (Not Plex.tv) will have the default options enabled
-
-#### Option 2: Installing client side:
 1. Have TamperMonkey/GreaseMonkey/Any UserScript manager installed on browser
 2. Install the user js from [here](https://github.com/andrewiankidd/Plextras.js/blob/master/Plextras.user.js) (click raw)
 3. Done! Now the script will run on **any** plex/web server including plex.tv
 
-#### Option 3: Installing to PMP
+#### Option Three: Installing to PMP
+    Pros: It's cool, and PMP is better than using browser
+    Cons: Only works in PMP
+    
 1. Copy Plextras.js to your PMP web-client js folder
 
     `C:\Program Files\Plex\Plex Media Player\web-client\desktop\js`
 
 2. open index.html in the above directory and paste this at the end:
 
-    `<script src="js/Plextras.js"></script>`
+    `<script src="{your plextras URL}"></script>`
     
 3. Done! Now PMP will run Plextras.js on startup
     
