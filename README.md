@@ -17,7 +17,7 @@ Minor customizations to plex/web plugin
 
 1. Navigate to [This page](http://andrewiankidd.co.uk/ext/mimefix/) and fill in details as you want
 
-2. Copy the resulting URL
+2. Copy the resulting URL, this is `{your plextras URL}`
     
 ## Step 2: Install
 
@@ -37,11 +37,12 @@ Minor customizations to plex/web plugin
 
 #### Option Two: Installing to Web Browser
     Pros: Works on any Plex/Web instance you visit, including other servers and Plex.tv
-    Cons: Only works in that browser, not customizable (yet)
+    Cons: Only works in the browser it's installed on
 
 1. Have TamperMonkey/GreaseMonkey/Any UserScript manager installed on browser
-2. Install the user js from [here](https://github.com/andrewiankidd/Plextras.js/blob/master/Plextras.user.js) (click raw)
-3. Done! Now the script will run on **any** plex/web server including plex.tv
+2. Install the base user js from [here](https://github.com/andrewiankidd/Plextras.js/blob/master/Plextras.user.js) (click raw)
+3. Replace the `script.src` value with {your plextras URL}
+4. Done! 
 
 #### Option Three: Installing to PMP
     Pros: It's cool, and PMP is better than using browser
