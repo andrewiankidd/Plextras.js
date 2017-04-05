@@ -19,7 +19,7 @@ Minor customizations to plex/web plugin
 
 2. Copy the resulting URL
     
-#### Step 2: Install
+## Step 2: Install
 
 ##### Option One - Install to Your server (Preferred)
     Pros: All user visiting your server by IP will get Plextras
