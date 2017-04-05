@@ -10,6 +10,7 @@ Minor customizations to plex/web plugin
 - Custom Background Image
 - Expand 'Extras' display for movies (shows as grid instead of scroller)
 - Hide Extras, Cast, Related Movies
+- Auto Sign In
 
 ## Setup & Install
 
@@ -23,7 +24,7 @@ Minor customizations to plex/web plugin
 
 ##### Option One - Install to Your server (Preferred)
     Pros: All user visiting your server by IP will get Plextras
-    Cons: Users visiting via Plex.tv will not get Plextras
+    Cons: Users visiting via Plex.tv will not get Plextras, updating PMS removes plextras
     
 1. Copy Plextras.js to your plex/web plugin directory`
 
