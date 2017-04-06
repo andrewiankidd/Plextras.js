@@ -26,7 +26,7 @@ Minor customizations to plex/web plugin
     Pros: All user visiting your server by IP will get Plextras
     Cons: Users visiting via Plex.tv will not get Plextras, updating PMS removes plextras
     
-1. Copy Plextras.js to your plex/web plugin directory`
+1. Locate your plex/web plugin directory`
 
     `C:\Program Files (x86)\Plex\Plex Media Server\Resources\Plug-ins\WebClient.bundle\Contents\Resources`
 
@@ -49,15 +49,22 @@ Minor customizations to plex/web plugin
     Pros: It's cool, and PMP is better than using browser
     Cons: Only works in PMP
     
-1. Copy Plextras.js to your PMP web-client js folder
+1. Locate your PMP web-client folder
 
-    `C:\Program Files\Plex\Plex Media Player\web-client\desktop\js`
+    `C:\Program Files\Plex\Plex Media Player\web-client\desktop\`
 
 2. open index.html in the above directory and paste this at the end:
 
     `<script src="{your plextras URL}"></script>`
     
 3. Done! Now PMP will run Plextras.js on startup
+
+### Option Four: DIY/Fork Install
+
+1. Save Plextras.js
+2. Modify it however you want
+3. Open the index.html for the client you want to install on
+4. Add the <script> reference for your custom Plextras.js
     
 ## Screenshots
 #### Sidebar Minimized and background artwork enabled:              
