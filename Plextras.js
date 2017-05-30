@@ -168,6 +168,13 @@ function loadSidebarSettings(){
 
 function loadCustomSection(){
 	console.log('[Plextras.js] Adding custom links section');
+	
+	//check if exists
+	if ($('#plextrasCustomSection').length >0)
+	{
+		console.log('[Plextras.js] Custom links section already in-place');
+		return false;
+	}
 
 	//locate navigation sidebar
 	var navdiv = $('div[role="navigation"]').parent();
@@ -184,6 +191,9 @@ function loadCustomSection(){
 
 	//remove all default links
 	newsec.find('[class^="SidebarListItem-sidebarListItem"]').remove();
+	
+	//add id
+	newsec.attr("id", 'plextrasCustomSection');
 
 	//start appending custom links
 	for (var key in customLinks) {
@@ -209,7 +219,7 @@ function switchPort(port)
 
 function internalLink(thelink)
 {
-	var pagecontainer = $('.ReactSidebarPageView-pageContainer-1bcfz');
+	var pagecontainer = $('.page-container');
 	var newhtml = "<iframe id='PlextrasIframe' width='100%' height='100%' src='" + thelink + "'>";
 	pagecontainer.html(newhtml);
 }
