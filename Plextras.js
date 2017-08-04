@@ -160,7 +160,9 @@ function loadSidebarSettings(){
 		//inject CSS
 		console.log('[Plextras.js] Hiding sidebar');
 		var hideSidebarCSS = '.page-container{margin-left:0px;} .sidebar-container{transition: 0.25s;}';
+		hideSidebarCSS += 'div[role="navigation"] div a {overflow: visible;} div[role="navigation"] div{padding-right:0;}button[data-qa-id="serverMenuButton"] div span, div[role=navigation] div[role=header], div[role=navigation] div a div:nth-child(2),';
 		hideSidebarCSS += '.sidebar-container [class^="SidebarLink-title"], .sidebar-container [class^="SidebarServerLibraries-librariesTitle"], .sidebar-container [class^="SidebarList-sidebarListHeader"]{font-size: 0px;}.sidebar-container [class^="SidebarLibrariesActions-actions"], .sidebar-container [class^="SidebarLink-children"], .sidebar-container [class^="ServerMenuButton-serverMenuTitle"]{display: none;}.sidebar-container [class^="SidebarLibraryItem-action"]{width: 0px;}.sidebar-container{width: 65px;}';
+		hideSidebarCSS += '.sidebar-container:hover button[data-qa-id="serverMenuButton"] div span,.sidebar-container:hover div[role=navigation] div[role=header],.sidebar-container:hover div[role=navigation] div a div:nth-child(2), '
 		hideSidebarCSS += '.sidebar-container:hover [class^="SidebarLink-title"], .sidebar-container:hover [class^="SidebarServerLibraries-librariesTitle"], .sidebar-container:hover [class^="SidebarList-sidebarListHeader"]{font-size: inherit;}.sidebar-container:hover [class^="SidebarLibrariesActions-actions"], .sidebar-container:hover [class^="SidebarLink-children"], .sidebar-container:hover [class^="ServerMenuButton-serverMenuTitle"]{display: inherit;}.sidebar-container:hover [class^="SidebarLibraryItem-action"]{width: inherit;}.sidebar-container:hover{width: inherit;}';
 		$('head').append('<style type="text/css">'+ hideSidebarCSS +'</style>');
 	}
@@ -188,10 +190,10 @@ function loadCustomSection(){
 	newsec.find('div[role="header"]').html(customHeader);
 
 	//copy Recommended link as template
-	var linktemplate = newsec.find("div[class^='SidebarListItem-sidebarListItem-']:last");
+	var linktemplate = newsec.find('a[role="link"]').parent().clone();
 
 	//remove all default links
-	newsec.find('[class^="SidebarListItem-sidebarListItem"]').remove();
+	newsec.find('a[role="link"]').parent().remove();
 	
 	//add id
 	newsec.attr("id", 'plextrasCustomSection');
@@ -200,10 +202,11 @@ function loadCustomSection(){
 	for (var key in customLinks) {
 		newsec = newsec.clone();
 		var newlink = linktemplate;
-		newlink.find('a').attr("href", customLinks[key]);
-		newlink.find('[class^="SidebarLink-title"]').html(key);
-		newlink.find('a').attr('target', '_blank');
-		newsec.append(newlink);
+		newlink.find('a[role="link"]').attr("href", customLinks[key]);
+		newlink.find('a[role="link"] div:nth-child(2)').html(key);
+		newlink.find('a[role="link"]').attr('target', '_blank');	
+		newsec.append(newlink[0]);
+		newlink = null;
 	}
 
 	//append the custom section
