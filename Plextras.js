@@ -37,16 +37,13 @@ script.src = 'https://code.jquery.com/jquery-1.11.0.min.js';
 script.type = 'text/javascript';
 document.getElementsByTagName('head')[0].appendChild(script);
 
-//wait X seconds before loading
-//NOTE: this doesnt play well with user chooser (plex home)
-//NOTE: would be nice to have a better trigger
+//init handler
 window.onload = function () {
-	//start
 	loadMods();
 }
 
+//nav handler
 window.onhashchange = function () {
-	//wait a bit to load custom section
 	loadMods();
 }
 
