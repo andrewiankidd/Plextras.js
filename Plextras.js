@@ -1,7 +1,6 @@
 ////////////////////////////////////////////////////
 //////////////////Settings//////////////////////////
 ////////////////////////////////////////////////////
-var delayInt = 2500;
 var cssBGColor = '#3f4245';
 var cssTopbarColor = 'Black';
 var showCustomBackgroundImage = false;
@@ -52,18 +51,23 @@ window.onhashchange = function () {
 }
 
 function loadMods(){
-console.log('[Plextras.js] Starting Plextras...');
+
+	console.log('[Plextras.js] Starting Plextras...');
 	loadCustomStyles();
 	loadSidebarSettings();
+	waitForPlexLoad();
+}
 
-	//wait a bit to load custom section
-	setTimeout(
-		function()
-		{			
-			loadExtraSettings();
-			loadCustomSection();
-		},
-	delayInt);
+function waitForPlexLoad() {
+	if ($('div[data-qa-id="hub--home.ondeck"]').is(":visible") ||
+	$('div[data-qa-id="hub--home.movies.recent"]').is(":visible") ||
+	$('div[data-qa-id="hub--home.television.recent"]').is(":visible") ||
+	$('div[data-qa-id="hub--home.videos.recent"]').is(":visible")) {		
+		loadExtraSettings();
+		loadCustomSection();
+	} else {
+		setTimeout(waitForPlexLoad, 500);
+	}
 }
 
 function loadCustomStyles(){
