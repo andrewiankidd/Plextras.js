@@ -223,7 +223,7 @@ function switchPort(port)
 
 function internalLink(thelink)
 {
-	var pagecontainer = $('.page-container');
+	var pagecontainer = $('[class^="Page-page"]');
 	var newhtml = "<iframe id='PlextrasIframe' width='100%' height='100%' src='" + thelink + "'>";
 	pagecontainer.html(newhtml);
 }
